@@ -1,5 +1,6 @@
 package ca.prabjas.juint5.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,12 +23,14 @@ public class HomePage extends BasePage {
 
     //*********Page Methods*********
     //Go to Homepage
+    @Step("Given I Am At HomePage")
     public HomePage GivenIAmAtHomePage(){
         driver.get(baseURL);
         return this;
     }
 
     //Go to LoginPage
+    @Step("When I Go To Login Page")
     public LoginPage WhenIGoToLoginPage(){
         click(signInButton);
         return PageFactory.initElements(driver,LoginPage.class);

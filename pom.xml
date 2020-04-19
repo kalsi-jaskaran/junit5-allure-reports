@@ -27,16 +27,6 @@
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>${juint5.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>${juint5.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${juint5.version}</version>
         </dependency>
@@ -61,35 +51,36 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <release>13</release>
+                    <release>14</release>
                 </configuration>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
+                <version>3.0.0-M3</version>
 
                 <configuration>
-
-                    <testFailureIgnore>true</testFailureIgnore>
-
+                    <testFailureIgnore>true</testFailureIgnore> <!--Ignores Test Failure.-->
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
-
-                    <systemProperties>
+                    <properties>
                         <property>
-                            <name>allure.results.directory</name>
-                            <value>${project.basedir}/allure-results</value>
+                            <name>listener</name>
+                            <value>io.qameta.allure.junit5.AllureJunit5</value>
                         </property>
-
-                        <property>
-                            <name>junit.jupiter.extensions.autodetection.enabled</name>
-                            <value>true</value>
-                        </property>
-                    </systemProperties>
+                        <configurationParameters>
+                            junit.jupiter.conditions.deactivate = *
+                            junit.jupiter.extensions.autodetection.enabled = true
+                            junit.jupiter.testinstance.lifecycle.default = per_class
+                            junit.jupiter.execution.parallel.enabled = true
+                            allure.results.directory = ${project.basedir}/allure-results
+                        </configurationParameters>
+                    </properties>
                 </configuration>
+
+                <!--Works without this dependency too.-->
                 <dependencies>
                     <dependency>
                         <groupId>org.aspectj</groupId>
@@ -97,6 +88,12 @@
                         <version>${aspectj.version}</version>
                     </dependency>
                 </dependencies>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>3.0.0-M4</version>
             </plugin>
 
             <plugin>

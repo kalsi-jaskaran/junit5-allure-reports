@@ -24,14 +24,14 @@ public class HomePage extends BasePage {
     //*********Page Methods*********
     //Go to Homepage
     @Step("Given I Am At HomePage")
-    public HomePage GivenIAmAtHomePage(){
+    public HomePage GivenWeAreAtHomePage(){
         driver.get(baseURL);
         return this;
     }
 
     //Go to LoginPage
     @Step("When I Go To Login Page")
-    public LoginPage WhenIGoToLoginPage(){
+    public LoginPage WhenWeGoToLoginPage(){
         click(signInButton);
         return PageFactory.initElements(driver, LoginPage.class);
     }

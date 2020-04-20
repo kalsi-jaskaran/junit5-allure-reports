@@ -19,10 +19,10 @@ public class LoginTest extends BaseTest {
     @Description("Invalid Login Test with Invalid Username and Invalid Password.")
     public void invalidLoginTest_ValidUserNameInvalidPassword () {
         page.getPage(HomePage.class)
-                .GivenIAmAtHomePage()
-                .WhenIGoToLoginPage()
-                .AndIloginToN11("opensourcecms", "open")
-                .ThenIVerifyPasswordErrorMessage(("ERROR: The password you entered for the username opensourcecms is incorrect."));
+                .GivenWeAreAtHomePage()
+                .WhenWeGoToLoginPage()
+                .AndWeLoginToWordPress("opensourcecms", "open")
+                .ThenWeVerifyPasswordErrorMessage(("ERROR: The password you entered for the username opensourcecms is incorrect."));
     }
 
     @Test
@@ -30,11 +30,11 @@ public class LoginTest extends BaseTest {
     @Description("Invalid Login Test with Empty Username and Empty Password.")
     public void invalidLoginTest_EmptyUserEmptyPassword () {
         page.getPage(HomePage.class)
-                .GivenIAmAtHomePage()
-                .WhenIGoToLoginPage()
-                .AndIloginToN11("","")
-                .ThenIVerifyLoginUserNameErrorMessage("ERROR: The username field is empty.")
-                .ThenIVerifyPasswordErrorMessage("ERROR: The password field is empty.");
+                .GivenWeAreAtHomePage()
+                .WhenWeGoToLoginPage()
+                .AndWeLoginToWordPress("","")
+                .ThenWeVerifyLoginUserNameErrorMessage("ERROR: The username field is empty.")
+                .ThenWeVerifyPasswordErrorMessage("ERROR: The password field is empty.");
     }
 
     @Test
@@ -42,6 +42,5 @@ public class LoginTest extends BaseTest {
     @Description("This is a Fail Story Description.")
     public void failTest () {
         Assertions.fail("Fail On Purpose");
-
     }
 }

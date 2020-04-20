@@ -34,7 +34,7 @@ public class LoginPage extends BasePage {
 
     //*********Page Methods*********
     @Step("And I Login To N11 {pusername} / {ppassword}.")
-    public LoginPage AndIloginToN11(String pusername, String ppassword){
+    public LoginPage AndWeLoginToWordPress(String pusername, String ppassword){
         waitForElementToBeClickable(loginButton);
         writeText(username,pusername);
         writeText(password, ppassword);
@@ -43,14 +43,14 @@ public class LoginPage extends BasePage {
     }
 
     @Step("Then I Verify Login User Name Error Message : {expectedText}")
-    public LoginPage ThenIVerifyLoginUserNameErrorMessage(String expectedText) {
+    public LoginPage ThenWeVerifyLoginUserNameErrorMessage(String expectedText) {
 
         assertTrue(readText(errorMessage).contains(expectedText));
         return this;
     }
 
     @Step("Then I Verify Password Error Message : {expectedText}")
-    public LoginPage ThenIVerifyPasswordErrorMessage(String expectedText) {
+    public LoginPage ThenWeVerifyPasswordErrorMessage(String expectedText) {
         assertTrue(readText(errorMessage).contains(expectedText));
         return this;
     }

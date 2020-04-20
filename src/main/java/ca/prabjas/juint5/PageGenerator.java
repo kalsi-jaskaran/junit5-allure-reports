@@ -3,6 +3,12 @@ package ca.prabjas.juint5;
 import ca.prabjas.juint5.pages.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 public class PageGenerator {
     public WebDriver driver;
@@ -15,6 +21,7 @@ public class PageGenerator {
     public  <TPage extends BasePage> TPage getPage (Class<TPage> pageClass) {
         try {
             //Initialize the Page with its elements and return it.
+            // PageFactory.initElements(new AppiumFieldDecorator(driver, Duration.ofSeconds(30)),  pageClass);
             return PageFactory.initElements(driver,  pageClass);
         } catch (Exception e) {
             e.printStackTrace();

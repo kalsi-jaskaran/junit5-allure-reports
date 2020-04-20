@@ -15,10 +15,10 @@ public class HomePage extends BasePage {
     }
 
     //*********Page Variables*********
-    String baseURL = "http://www.n11.com/";
+    String baseURL = "https://s1.demo.opensourcecms.com/wordpress/";
 
     //*********Web Elements By Using Page Factory*********
-    @FindBy(how = How.CLASS_NAME, using = "btnSignIn")
+    @FindBy(how = How.LINK_TEXT, using = "Log in")
     public WebElement signInButton;
 
     //*********Page Methods*********
@@ -33,6 +33,6 @@ public class HomePage extends BasePage {
     @Step("When I Go To Login Page")
     public LoginPage WhenIGoToLoginPage(){
         click(signInButton);
-        return PageFactory.initElements(driver,LoginPage.class);
+        return PageFactory.initElements(driver, LoginPage.class);
     }
 }

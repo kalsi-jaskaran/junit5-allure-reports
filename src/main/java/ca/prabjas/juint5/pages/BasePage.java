@@ -4,6 +4,8 @@ import ca.prabjas.juint5.PageGenerator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -46,6 +48,20 @@ public class BasePage extends PageGenerator {
         if(!popup.isEmpty()){
             popup.get(0).click();
             Thread.sleep(200);
+        }
+    }
+
+    public <T> void waitForElementToBeClickable(T elementAttr) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        if(elementAttr.getClass().getName().contains("By")) {
+            wait.until(ExpectedConditions.elementToBeClickable((By) elementAttr));
+        } else {
+            wait.until(ExpectedConditions.elementToBeClickable((WebElement) elementAttr));
         }
     }
 }

@@ -42,5 +42,6 @@ public class LoginTest extends BaseTest {
     @Description("This is a Fail Story Description.")
     public void failTest () {
         Assertions.fail("Fail On Purpose");
+
     }
 }

@@ -1,5 +1,5 @@
 # junit5-allure-reports
-Allure with Junit5
+Generate Allure Report for Junit5 Test and Selenium.
 
 To execute Test: <B>mvn clean test</B>
 
